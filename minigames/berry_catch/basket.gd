@@ -1,7 +1,7 @@
 extends Area2D
 class_name BasketArea # The first child of a Basket node subtree
 
-const SELECT_COOLDOWN_RESET := 20
+const SELECT_COOLDOWN_RESET := 10
 const SELECT_COOLDOWN_SCALE := 5
 var select_cooldown := 0
 var selected := false
@@ -27,12 +27,14 @@ func snap_to_mouse():
 
 
 func _on_input_event( _viewport:Node, event:InputEvent, _shape_idx:int):
-	if select_cooldown <= 0:
-		if event is InputEventMouseButton:
+	if event is InputEventMouseButton:
+		if select_cooldown <= 0:
 			if (event.button_index & MOUSE_BUTTON_LEFT):
 				#print("oop!")
 				selected = !selected
 				select_cooldown = SELECT_COOLDOWN_RESET
+		else:
+			select_cooldown = SELECT_COOLDOWN_RESET
 	
 	pass
 

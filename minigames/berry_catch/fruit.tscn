@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://djp3y85t330j1"]
+[gd_scene load_steps=5 format=3 uid="uid://uof8dduwcbwx"]
 
 [ext_resource type="Texture2D" uid="uid://2unm2khxu323" path="res://assets/textures/minigames/apple.png" id="1_o46d0"]
-[ext_resource type="Script" path="res://minigames/berry_catch/fruit.gd" id="3_5j8v6"]
+[ext_resource type="Script" path="res://minigames/berry_catch/fruit_wrapper.gd" id="2_x3n7p"]
+[ext_resource type="Script" path="res://minigames/berry_catch/fruit_area.gd" id="3_snkjw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oq8ml"]
 radius = 16.0
@@ -11,10 +12,11 @@ z_index = 2
 position = Vector2(64, 64)
 scale = Vector2(4, 4)
 texture = ExtResource("1_o46d0")
+script = ExtResource("2_x3n7p")
 
 [node name="FruitArea" type="Area2D" parent="."]
 gravity_space_override = 1
-script = ExtResource("3_5j8v6")
+script = ExtResource("3_snkjw")
 
 [node name="FruitShape" type="CollisionShape2D" parent="FruitArea"]
 position = Vector2(-0.5, -0.25)

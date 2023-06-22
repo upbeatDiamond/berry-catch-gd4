@@ -14,17 +14,17 @@ var is_prepared := false
 
 var falling_fruit : int = 15
 
-func _init( available_fruit : Array[FruitData], fruitfall_count := 5 ):
-	
-	fruit_types = available_fruit
-	falling_fruit = fruitfall_count
-	
-	var i:int = 1
-	while i < fruit_types.size():
-		fruit_types[i].chance_weight = fruit_types[i].chance_weight + fruit_types[i-1].chance_weight
-		i += 1
-	
-	pass
+#func _init( available_fruit : Array[FruitData], fruitfall_count := 5 ):
+#
+#	fruit_types = available_fruit
+#	falling_fruit = fruitfall_count
+#
+#	var i:int = 1
+#	while i < fruit_types.size():
+#		fruit_types[i].chance_weight = fruit_types[i].chance_weight + fruit_types[i-1].chance_weight
+#		i += 1
+#
+#	pass
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,10 +43,10 @@ func prepare():
 	var i:int = 0
 	print( fruit_template.can_instantiate() )
 	while i < falling_fruit:
-		new_fruit = fruit_template.instantiate()
+		new_fruit = fruit_template.instantiate() as FruitWrapper
 		add_child( new_fruit )
-		new_fruit.position = Vector2(32, i*10)
-		new_fruit.fruit_caught.connect(_on_fruit_area_fruit_caught)
+		new_fruit.position = Vector2(background.size.x*2, background.size.y)
+		new_fruit.area.fruit_caught.connect(_on_fruit_area_fruit_caught)
 		i += 1
 	
 	is_prepared = true
@@ -55,8 +55,8 @@ func prepare():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if !is_prepared:
-		prepare()
+	#if !is_prepared:
+	#	prepare()
 	pass
 
 

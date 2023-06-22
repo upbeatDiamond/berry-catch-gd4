@@ -18,7 +18,7 @@ func _ready():
 func _process(delta):
 	gravity_velocity += delta * GRAVITATIONAL_PULL
 	get_parent().position.y = get_parent().position.y + fruit_speed * delta + gravity_velocity
-	#print("fruit at ", get_parent().position.y)
+	#print("fruit ", get_rid(), " at ", get_parent().position.y)
 	pass
 
 # If you wanted to change its field called 'position', just use that.
@@ -39,9 +39,10 @@ func _on_area_entered(body):
 		#print("Gee, I shure do hope this body changes position!")
 		fruit_caught.emit(fruit_type)
 		set_new_position()
+	elif body is FruitArea:
+		return
 	else:
 		#print("Mah boy! Dinner. is what all true warriors strive for!")
 		set_new_position()
-	
 	
 	pass # Replace with function body.

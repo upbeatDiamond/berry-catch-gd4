@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://6s15vmtubc7x"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://minigames/berry_catch/fruit.gd" id="1_o6rde"]
+[ext_resource type="Script" path="res://minigames/berry_catch/fruit_area.gd" id="1_o6rde"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oq8ml"]
 radius = 16.0
