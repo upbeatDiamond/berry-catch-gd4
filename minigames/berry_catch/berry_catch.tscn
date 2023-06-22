@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://nhh370vwfi7e"]
+
+[ext_resource type="Script" path="res://minigames/berry_catch/berry_catch.gd" id="1_15qte"]
+[ext_resource type="Texture2D" uid="uid://cosmp4usfb10r" path="res://assets/textures/minigames/berry_catch_background.png" id="1_p1sfv"]
+[ext_resource type="Texture2D" uid="uid://cx22gokqkd2yu" path="res://assets/textures/minigames/basket.png" id="2_v3wc4"]
+[ext_resource type="Script" path="res://minigames/berry_catch/basket.gd" id="3_w35nx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynocs"]
+size = Vector2(24.25, 13.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nfsr"]
+size = Vector2(1150.5, 169)
+
+[node name="BerryCatch" type="Node2D"]
+script = ExtResource("1_15qte")
+
+[node name="Background" type="Node" parent="."]
+
+[node name="BackgroundPlane" type="TextureRect" parent="Background"]
+process_mode = 4
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p1sfv")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Basket" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(339, 363)
+scale = Vector2(8, 8)
+texture = ExtResource("2_v3wc4")
+
+[node name="BasketArea" type="Area2D" parent="Basket"]
+script = ExtResource("3_w35nx")
+
+[node name="BasketShape" type="CollisionShape2D" parent="Basket/BasketArea"]
+position = Vector2(0, 0.4375)
+shape = SubResource("RectangleShape2D_ynocs")
+
+[node name="GroundArea" type="Area2D" parent="."]
+
+[node name="GroundShape" type="CollisionShape2D" parent="GroundArea"]
+position = Vector2(575.75, 792)
+shape = SubResource("RectangleShape2D_6nfsr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 1
+offset_right = 222.0
+offset_bottom = 105.0
+text = "BabyBaby"
+
+[connection signal="input_event" from="Basket/BasketArea" to="Basket/BasketArea" method="_on_input_event"]
