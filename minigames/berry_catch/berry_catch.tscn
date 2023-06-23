@@ -31,7 +31,7 @@ stretch_mode = 4
 [node name="Basket" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(339, 363)
-scale = Vector2(8, 8)
+scale = Vector2(6, 6)
 texture = ExtResource("2_v3wc4")
 
 [node name="BasketArea" type="Area2D" parent="Basket"]
